@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: 
+    repository: rust
+
+inputs:
+- name: rust-project
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    cd rust-project
+    make test

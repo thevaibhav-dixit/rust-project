@@ -1,0 +1,22 @@
+resources:
+- name: rust-project
+  type: git
+  source:
+    uri: https://github.com/thevaibhav-dixit/rust-project.git
+    branch: main
+
+jobs:
+- name: build-job
+  plan:
+  - get: rust-project
+    trigger: true
+  - task: build-task
+    file: rust-project/ci/build.yaml
+
+- name: test-job
+  plan:
+  - get: rust-project
+    passed: [build-job]
+    trigger: true
+  - task: test-task
+    file: rust-project/ci/test.yaml
