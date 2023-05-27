@@ -11,7 +11,7 @@ jobs:
   - get: rust-project
     trigger: true
   - task: build-task
-    file: rust-project/ci/build.yaml
+    file: rust-project/ci/build-job.yaml
 
 - name: test-job
   plan:
